@@ -53,13 +53,7 @@ class _RapportsStockPageState extends State<RapportsStockPage> {
       appBar: AppBar(
         title: Text('Rapports sur le stock',
             style: TextStyle(fontWeight: FontWeight.bold)),
-        backgroundColor: Colors.blue[600],
-        actions: [
-          IconButton(
-            icon: Icon(Icons.download, color: Colors.white),
-            onPressed: exportToCSV,
-          ),
-        ],
+        backgroundColor: Colors.green[600],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -127,7 +121,7 @@ class _RapportsStockPageState extends State<RapportsStockPage> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: exportToCSV,
-        backgroundColor: Colors.blue[600],
+        backgroundColor: Colors.black,
         child: Icon(Icons.download, color: Colors.white),
       ),
     );

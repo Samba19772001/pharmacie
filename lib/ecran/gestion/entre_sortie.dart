@@ -53,11 +53,7 @@ class _MouvementsStockPageState extends State<PageEntreSortie> {
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [
-              Colors.blue[700]!,
-              Colors.blue[300]!,
-              Colors.blue[100]!,
-            ],
+            colors: [Colors.white, Colors.white!, Colors.white],
           ),
         ),
         child: Padding(
@@ -84,7 +80,7 @@ class _MouvementsStockPageState extends State<PageEntreSortie> {
                     // Icône pour accéder à la page "Rapport"
                     IconButton(
                       icon: Icon(Icons.analytics,
-                          color: Colors.white,
+                          color: Colors.black,
                           size: 40), // Ajustement de la taille
                       onPressed: () {
                         Navigator.pushNamed(context,
@@ -94,7 +90,7 @@ class _MouvementsStockPageState extends State<PageEntreSortie> {
                     // Icône pour retourner à la page d'accueil
                     IconButton(
                       icon: Icon(Icons.home,
-                          color: Colors.white,
+                          color: Colors.black,
                           size: 40), // Ajustement de la taille
                       onPressed: () {
                         Navigator.pushNamed(context,
@@ -180,7 +176,7 @@ class _MouvementsStockPageState extends State<PageEntreSortie> {
                 ),
                 style: ElevatedButton.styleFrom(
                   backgroundColor:
-                      Colors.blue, // Couleur d'arrière-plan du bouton
+                      Colors.green, // Couleur d'arrière-plan du bouton
                   padding: EdgeInsets.symmetric(horizontal: 20, vertical: 15),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30), // Coins arrondis

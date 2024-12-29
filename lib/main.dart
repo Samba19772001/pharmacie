@@ -5,6 +5,7 @@ import 'ecran/gestion/liste_medocs.dart';
 import 'ecran/gestion/entre_sortie.dart';
 import 'ecran/gestion/ajouter_medocs.dart';
 import 'ecran/gestion/rapport.dart';
+import 'ecran/inscrition.dart';
 
 void main() {
   runApp(ApplicationPharmacie());
@@ -27,6 +28,7 @@ class ApplicationPharmacie extends StatelessWidget {
         '/entresortie': (context) => PageEntreSortie(),
         '/ajoutermedoc': (context) => PageAjouterMedoc(),
         '/rapport': (context) => RapportsStockPage(),
+        '/inscription': (context) => PageInscription(),
       },
     );
   }

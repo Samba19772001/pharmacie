@@ -7,175 +7,311 @@ class PageListeMedoc extends StatefulWidget {
 }
 
 class _MedicamentsDisponiblesPageState extends State<PageListeMedoc> {
-  String searchQuery = ''; // Variable pour la recherche
-
-  // Liste des médicaments avec photo, description, et quantité
-  final List<Map<String, dynamic>> medicaments = [
-    // ...vos médicaments ici...
-  ];
-
-  // Filtrage des médicaments disponibles (quantité > 0)
-  List<Map<String, dynamic>> get medicamentsDisponibles {
-    return medicaments
-        .where((medicament) =>
-            medicament['quantite'] > 0 &&
-            medicament['nom'].toLowerCase().contains(searchQuery.toLowerCase()))
-        .toList();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Médicaments Disponibles'),
-        backgroundColor: Colors.blue[600],
-        actions: [
-          // Icône de recherche
-          IconButton(
-            icon: Icon(Icons.search),
-            onPressed: () {
-              showSearch(
-                context: context,
-                delegate: MedicamentSearchDelegate(medicaments),
-              );
-            },
-          ),
-        ],
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: medicamentsDisponibles.isEmpty
-            ? Center(
-                child: Text(
-                  'Aucun médicament disponible.',
-                  style: TextStyle(fontSize: 18, color: Colors.red),
-                ),
-              )
-            : ListView.builder(
-                itemCount: medicamentsDisponibles.length,
-                itemBuilder: (context, index) {
-                  final medicament = medicamentsDisponibles[index];
-                  return Card(
-                    elevation: 4,
-                    margin: const EdgeInsets.symmetric(vertical: 8.0),
-                    child: ListTile(
-                      leading: ClipRRect(
-                        borderRadius: BorderRadius.circular(8),
-                        child: Image.asset(
-                          medicament['photo'],
-                          width: 50,
-                          height: 50,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      title: Text(
-                        medicament['nom'],
-                        style: TextStyle(
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      subtitle: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Quantité: ${medicament['quantite']}',
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(height: 5),
-                          Text(
-                            medicament['description'],
-                            style: TextStyle(
-                                fontSize: 12, color: Colors.grey[700]),
-                          ),
-                        ],
-                      ),
-                      isThreeLine: true,
-                    ),
-                  );
-                },
-              ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            premiersection(),
+            deuxiemesection(),
+            SectionMedoc(
+              photoPath: "assets/medicament1.jpeg",
+              description:
+                  "Paracétamol - 500mg - Soulage les douleurs et la fièvre",
+              quantity: 20,
+            ),
+            SectionMedoc(
+              photoPath: "assets/medicament2.jpeg",
+              description: "Ibuprofène - 400mg - Anti-inflammatoire efficace",
+              quantity: 15,
+            ),
+            SectionMedoc(
+              photoPath: "assets/medicament3.jpeg",
+              description:
+                  "Amoxicilline - 1g - Antibiotique pour infections bactériennes",
+              quantity: 30,
+            ),
+            SectionMedoc(
+              photoPath: "assets/medicament1.jpeg",
+              description:
+                  "Paracétamol - 500mg - Soulage les douleurs et la fièvre",
+              quantity: 20,
+            ),
+            SectionMedoc(
+              photoPath: "assets/medicament2.jpeg",
+              description: "Ibuprofène - 400mg - Anti-inflammatoire efficace",
+              quantity: 15,
+            ),
+            SectionMedoc(
+              photoPath: "assets/medicament3.jpeg",
+              description:
+                  "Amoxicilline - 1g - Antibiotique pour infections bactériennes",
+              quantity: 30,
+            ),
+            SectionMedoc(
+              photoPath: "assets/medicament1.jpeg",
+              description:
+                  "Paracétamol - 500mg - Soulage les douleurs et la fièvre",
+              quantity: 20,
+            ),
+            SectionMedoc(
+              photoPath: "assets/medicament2.jpeg",
+              description: "Ibuprofène - 400mg - Anti-inflammatoire efficace",
+              quantity: 15,
+            ),
+            SectionMedoc(
+              photoPath: "assets/medicament3.jpeg",
+              description:
+                  "Amoxicilline - 1g - Antibiotique pour infections bactériennes",
+              quantity: 30,
+            ),
+            SectionMedoc(
+              photoPath: "assets/medicament1.jpeg",
+              description:
+                  "Paracétamol - 500mg - Soulage les douleurs et la fièvre",
+              quantity: 20,
+            ),
+            SectionMedoc(
+              photoPath: "assets/medicament2.jpeg",
+              description: "Ibuprofène - 400mg - Anti-inflammatoire efficace",
+              quantity: 15,
+            ),
+            SectionMedoc(
+              photoPath: "assets/medicament3.jpeg",
+              description:
+                  "Amoxicilline - 1g - Antibiotique pour infections bactériennes",
+              quantity: 30,
+            ),
+            SectionMedoc(
+              photoPath: "assets/medicament1.jpeg",
+              description:
+                  "Paracétamol - 500mg - Soulage les douleurs et la fièvre",
+              quantity: 20,
+            ),
+            SectionMedoc(
+              photoPath: "assets/medicament2.jpeg",
+              description: "Ibuprofène - 400mg - Anti-inflammatoire efficace",
+              quantity: 15,
+            ),
+            SectionMedoc(
+              photoPath: "assets/medicament3.jpeg",
+              description:
+                  "Amoxicilline - 1g - Antibiotique pour infections bactériennes",
+              quantity: 30,
+            ),
+            SectionMedoc(
+              photoPath: "assets/medicament1.jpeg",
+              description:
+                  "Paracétamol - 500mg - Soulage les douleurs et la fièvre",
+              quantity: 20,
+            ),
+            SectionMedoc(
+              photoPath: "assets/medicament2.jpeg",
+              description: "Ibuprofène - 400mg - Anti-inflammatoire efficace",
+              quantity: 15,
+            ),
+            SectionMedoc(
+              photoPath: "assets/medicament3.jpeg",
+              description:
+                  "Amoxicilline - 1g - Antibiotique pour infections bactériennes",
+              quantity: 30,
+            ),
+            SectionMedoc(
+              photoPath: "assets/medicament1.jpeg",
+              description:
+                  "Paracétamol - 500mg - Soulage les douleurs et la fièvre",
+              quantity: 20,
+            ),
+            SectionMedoc(
+              photoPath: "assets/medicament2.jpeg",
+              description: "Ibuprofène - 400mg - Anti-inflammatoire efficace",
+              quantity: 15,
+            ),
+            SectionMedoc(
+              photoPath: "assets/medicament3.jpeg",
+              description:
+                  "Amoxicilline - 1g - Antibiotique pour infections bactériennes",
+              quantity: 30,
+            ),
+            SectionMedoc(
+              photoPath: "assets/medicament1.jpeg",
+              description:
+                  "Paracétamol - 500mg - Soulage les douleurs et la fièvre",
+              quantity: 20,
+            ),
+            SectionMedoc(
+              photoPath: "assets/medicament2.jpeg",
+              description: "Ibuprofène - 400mg - Anti-inflammatoire efficace",
+              quantity: 15,
+            ),
+            SectionMedoc(
+              photoPath: "assets/medicament3.jpeg",
+              description:
+                  "Amoxicilline - 1g - Antibiotique pour infections bactériennes",
+              quantity: 30,
+            ),
+          ],
+        ),
       ),
     );
   }
 }
 
-class MedicamentSearchDelegate extends SearchDelegate {
-  final List<Map<String, dynamic>> medicaments;
-
-  MedicamentSearchDelegate(this.medicaments);
-
-  @override
-  String? get searchFieldLabel => 'Recherche médicament...';
-
-  @override
-  List<Widget> buildActions(BuildContext context) {
-    return [
-      IconButton(
-        icon: Icon(Icons.clear),
-        onPressed: () {
-          query = ''; // Réinitialiser la recherche
-        },
+Widget premiersection() => Container(
+      padding: EdgeInsets.all(20),
+      //margin: EdgeInsets.all(10),
+      height: 100,
+      width: double.infinity,
+      child: Row(
+        children: <Widget>[
+          Expanded(
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(10),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black
+                        .withOpacity(0.3), // Couleur de l'ombre avec opacité
+                    spreadRadius: 1, // Taille de l'ombre
+                    blurRadius: 5, // Rayon de flou
+                    offset:
+                        Offset(0, 2), // Décalage horizontal (x) et vertical (y)
+                  ),
+                ],
+              ),
+              child: TextField(
+                decoration: InputDecoration(
+                  hintText: 'Rechercher un médicament...',
+                  hintStyle: TextStyle(color: Colors.black38),
+                  prefixIcon: Icon(Icons.search, color: Colors.black38),
+                  border: InputBorder.none,
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
-    ];
-  }
-
-  @override
-  Widget buildLeading(BuildContext context) {
-    return IconButton(
-      icon: Icon(Icons.arrow_back),
-      onPressed: () {
-        close(context, null); // Fermer la recherche
-      },
     );
-  }
 
-  @override
-  Widget buildResults(BuildContext context) {
-    final results = medicaments
-        .where((medicament) =>
-            medicament['nom'].toLowerCase().contains(query.toLowerCase()))
-        .toList();
-
-    return ListView.builder(
-      itemCount: results.length,
-      itemBuilder: (context, index) {
-        final medicament = results[index];
-        return ListTile(
-          leading: Image.asset(
-            medicament['photo'],
-            width: 50,
-            height: 50,
-            fit: BoxFit.cover,
+Widget deuxiemesection() => Container(
+      height: 150,
+      width: double.infinity,
+      padding: EdgeInsets.all(10),
+      margin: EdgeInsets.all(15),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black
+                .withOpacity(0.3), // Couleur de l'ombre avec opacité
+            spreadRadius: 1, // Taille de l'ombre
+            blurRadius: 5, // Rayon de flou
+            offset: Offset(0, 2), // Décalage horizontal (x) et vertical (y)
           ),
-          title: Text(medicament['nom']),
-          subtitle: Text(medicament['description']),
-        );
-      },
+        ],
+        gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Colors.green, Colors.greenAccent]),
+      ),
+      child: Column(
+        children: [
+          Text(
+            "BIENVENU DANS VOTRE LISTE DE MEDICAMENT ",
+            style: TextStyle(
+                fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Text(
+            "nous vous affrons une service de qualite ",
+            style: TextStyle(
+                fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          Text(
+            "rechercher et scroler pour voir la liste des medocs ",
+            style: TextStyle(
+                fontSize: 12, fontWeight: FontWeight.bold, color: Colors.black),
+          ),
+        ],
+      ),
     );
-  }
+
+class SectionMedoc extends StatelessWidget {
+  final String photoPath; // Chemin de l'image (Asset ou URL)
+  final String description; // Description du médicament
+  final int quantity; // Quantité disponible
+
+  const SectionMedoc({
+    super.key,
+    required this.photoPath,
+    required this.description,
+    required this.quantity,
+  });
 
   @override
-  Widget buildSuggestions(BuildContext context) {
-    final suggestions = medicaments
-        .where((medicament) =>
-            medicament['nom'].toLowerCase().contains(query.toLowerCase()))
-        .toList();
-
-    return ListView.builder(
-      itemCount: suggestions.length,
-      itemBuilder: (context, index) {
-        final medicament = suggestions[index];
-        return ListTile(
-          leading: Image.asset(
-            medicament['photo'],
-            width: 50,
-            height: 50,
-            fit: BoxFit.cover,
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+      padding: EdgeInsets.all(10),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.4),
+            blurRadius: 5,
+            offset: Offset(0, 2),
           ),
-          title: Text(medicament['nom']),
-          subtitle: Text(medicament['description']),
-        );
-      },
+        ],
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Affichage de l'image
+          ClipRRect(
+            borderRadius: BorderRadius.circular(8),
+            child: Image.asset(
+              photoPath,
+              width: 80,
+              height: 80,
+              fit: BoxFit.cover,
+            ),
+          ),
+          SizedBox(width: 10),
+          // Description et quantité
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  description,
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                SizedBox(height: 5),
+                Text(
+                  "Quantité : $quantity",
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Colors.grey[700],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

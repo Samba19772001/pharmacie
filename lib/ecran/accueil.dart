@@ -7,48 +7,15 @@ class PageAccueil extends StatefulWidget {
 
 class _PageAccueilState extends State<PageAccueil> {
   TextEditingController searchController = TextEditingController();
-  List<String> medicaments = [
-    'Paracétamol',
-    'Ibuprofène',
-    'Aspirine',
-    'Antibiotique',
-    'Vitamine C'
-  ];
-
-  List<String> filteredMedicaments = [];
 
   @override
-  void initState() {
-    super.initState();
-    filteredMedicaments = medicaments;
-    searchController.addListener(_filterMedicaments);
-  }
-
-  void _filterMedicaments() {
-    setState(() {
-      filteredMedicaments = medicaments
-          .where((medicament) => medicament
-              .toLowerCase()
-              .contains(searchController.text.toLowerCase()))
-          .toList();
-    });
-  }
-
-  @override
-  void dispose() {
-    searchController.removeListener(_filterMedicaments);
-    searchController.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue[700],
+        backgroundColor: Colors.green[500],
         title: Row(
           children: <Widget>[
-            SizedBox(width: 10),
             Expanded(
               child: Container(
                 decoration: BoxDecoration(
@@ -60,7 +27,7 @@ class _PageAccueilState extends State<PageAccueil> {
                   decoration: InputDecoration(
                     hintText: 'Rechercher un médicament...',
                     hintStyle: TextStyle(color: Colors.grey),
-                    prefixIcon: Icon(Icons.search, color: Colors.blue),
+                    prefixIcon: Icon(Icons.search, color: Colors.green),
                     border: InputBorder.none,
                   ),
                 ),
@@ -74,7 +41,7 @@ class _PageAccueilState extends State<PageAccueil> {
           padding: EdgeInsets.zero,
           children: <Widget>[
             DrawerHeaderWidget(
-                imagePath: 'assets/images/docteur.jpeg', userName: 'DR. DIOUF'),
+                imagePath: 'assets/docteur.jpeg', userName: 'DR. DIOUF'),
             ListTile(
               leading: Icon(Icons.settings),
               title: Text('Paramètres'),
@@ -122,79 +89,115 @@ class _PageAccueilState extends State<PageAccueil> {
           ],
         ),
       ),
-      body: Builder(
-        builder: (BuildContext context) => Container(
-          padding: EdgeInsets.symmetric(vertical: 20),
-          width: double.infinity,
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Colors.blue[800]!,
-                Colors.blue[700]!,
-                Colors.blue[100]!,
-              ],
-            ),
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              SizedBox(height: 20),
-              Padding(
-                padding: const EdgeInsets.only(right: 20.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: <Widget>[
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: <Widget>[
-                        Text("WELCOME",
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 50)),
-                        Text("Dr. DIOUF",
-                            style:
-                                TextStyle(color: Colors.white, fontSize: 20)),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-              SizedBox(height: 10),
-              Expanded(
+      body: Stack(
+        alignment: Alignment.center,
+        children: [
+          Align(
+            alignment: Alignment.topCenter,
+            child: SingleChildScrollView(
+              child: Expanded(
                 child: Container(
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(60),
-                      topRight: Radius.circular(60),
-                    ),
                   ),
-                  child: ListView(
-                    padding: EdgeInsets.all(20),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      WelcomeBanner(),
-                      SizedBox(height: 20),
-                      SectionTitle(
-                          title: 'Notification',
-                          fontSize: 24,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.red),
-                      SizedBox(height: 10),
-                      NotificationList(),
-                      SizedBox(height: 20),
-                      _buildQuickActionButton(context, "GESTION DES STOCKS",
-                          Icons.arrow_forward, '/entresortie'),
-                      SizedBox(height: 20),
-                      _buildQuickActionButton(context, "AJOUTER UN MÉDICAMENT",
-                          Icons.add, '/ajoutermedoc'),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.green,
+                          borderRadius: BorderRadius.circular(10),
+                          gradient: LinearGradient(
+                              begin: Alignment.topCenter,
+                              end: Alignment.bottomCenter,
+                              colors: [
+                                Colors.green,
+                                const Color.fromARGB(255, 89, 244, 95)
+                              ]),
+                          boxShadow: [
+                            BoxShadow(
+                              color:
+                                  Colors.black.withOpacity(0.2), // Ombre légère
+                              blurRadius: 10,
+                              offset: Offset(0, 5),
+                            ),
+                          ],
+                        ),
+                        width: double.infinity,
+                        margin: EdgeInsets.all(20),
+                        padding: EdgeInsets.symmetric(
+                            vertical: 20), // Ajout d'espacement interne
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment:
+                              MainAxisAlignment.center, // Centrage vertical
+                          children: <Widget>[
+                            Text(
+                              "WELCOME",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 40,
+                                fontWeight: FontWeight.bold, // Texte en gras
+                                letterSpacing: 2, // Espacement des lettres
+                              ),
+                            ),
+                            // Espacement entre les textes
+                            Text(
+                              "Dr. DIOUF",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        height: 1000,
+                        //color: Colors.blue,
+                        child: Expanded(
+                          child: Container(
+                            decoration: BoxDecoration(color: Colors.white),
+                            child: ListView(
+                              padding: EdgeInsets.all(20),
+                              children: [
+                                WelcomeBanner(),
+                                SizedBox(height: 20),
+                                SectionTitle(
+                                    title: 'Notification',
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.w600,
+                                    color: Colors.red),
+                                SizedBox(height: 10),
+                                NotificationList(),
+                                SizedBox(height: 20),
+                                _buildQuickActionButton(
+                                    context,
+                                    "GESTION DES STOCKS",
+                                    Icons.arrow_forward,
+                                    '/entresortie'),
+                                SizedBox(height: 20),
+                                _buildQuickActionButton(
+                                    context,
+                                    "AJOUTER UN MÉDICAMENT",
+                                    Icons.add,
+                                    '/ajoutermedoc'),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
               ),
-            ],
-          ),
-        ),
+            ),
+          )
+        ],
       ),
     );
   }
@@ -208,7 +211,7 @@ class _PageAccueilState extends State<PageAccueil> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30),
           ),
-          backgroundColor: Colors.blue,
+          backgroundColor: Colors.green,
         ),
         onPressed: () {
           Navigator.pushNamed(context, route);
@@ -237,7 +240,13 @@ class DrawerHeaderWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return DrawerHeader(
       decoration: BoxDecoration(
-        color: Color.fromARGB(255, 10, 125, 219),
+        gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [
+              const Color.fromARGB(227, 20, 75, 147),
+              const Color.fromARGB(248, 143, 220, 136)
+            ]),
       ),
       child: Row(
         children: [
@@ -265,12 +274,12 @@ class WelcomeBanner extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: Colors.blue[100],
+        color: Colors.green[100],
         borderRadius: BorderRadius.circular(15),
       ),
       child: Row(
         children: [
-          Icon(Icons.local_pharmacy, size: 50, color: Colors.blue[700]),
+          Icon(Icons.local_pharmacy, size: 50, color: Colors.greenAccent[700]),
           SizedBox(width: 15),
           Expanded(
             child: Text(

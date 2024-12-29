@@ -71,7 +71,7 @@ class _PageAjouterMedocState extends State<PageAjouterMedoc> {
           'AJOUTER MEDICAMENT ',
           style: TextStyle(fontSize: 24),
         ),
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.green,
       ),
       body: Container(
         child: Padding(
@@ -98,10 +98,9 @@ class _PageAjouterMedocState extends State<PageAjouterMedoc> {
                     labelText: "Nom du médicament",
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide(color: Colors.blue[600]!),
+                      borderSide: BorderSide(color: Colors.green),
                     ),
-                    prefixIcon:
-                        Icon(Icons.local_pharmacy, color: Colors.blue[600]),
+                    prefixIcon: Icon(Icons.local_pharmacy, color: Colors.black),
                   ),
                 ),
                 SizedBox(height: 16),
@@ -113,10 +112,9 @@ class _PageAjouterMedocState extends State<PageAjouterMedoc> {
                     labelText: "Description du médicament",
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(12),
-                      borderSide: BorderSide(color: Colors.blue[600]!),
+                      borderSide: BorderSide(color: Colors.black),
                     ),
-                    prefixIcon:
-                        Icon(Icons.description, color: Colors.blue[600]),
+                    prefixIcon: Icon(Icons.description, color: Colors.black),
                   ),
                   maxLines: 3,
                 ),
@@ -128,7 +126,7 @@ class _PageAjouterMedocState extends State<PageAjouterMedoc> {
                   style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
-                      color: Colors.blue[800]),
+                      color: Colors.black),
                 ),
                 SizedBox(height: 8),
                 GestureDetector(
@@ -137,11 +135,11 @@ class _PageAjouterMedocState extends State<PageAjouterMedoc> {
                     height: 100,
                     width: double.infinity,
                     decoration: BoxDecoration(
-                      border: Border.all(color: Colors.blue[400]!),
+                      border: Border.all(color: Colors.green),
                       borderRadius: BorderRadius.circular(12),
                       boxShadow: [
                         BoxShadow(
-                          color: Colors.black26,
+                          color: Colors.black12,
                           blurRadius: 6,
                           offset: Offset(0, 3),
                         ),
@@ -158,7 +156,7 @@ class _PageAjouterMedocState extends State<PageAjouterMedoc> {
                         : Center(
                             child: Text(
                               "Cliquez pour ajouter une image",
-                              style: TextStyle(color: Colors.grey[600]),
+                              style: TextStyle(color: Colors.black),
                             ),
                           ),
                   ),
@@ -177,7 +175,7 @@ class _PageAjouterMedocState extends State<PageAjouterMedoc> {
                       padding:
                           EdgeInsets.symmetric(horizontal: 40, vertical: 20),
                       backgroundColor:
-                          Colors.blue[600], // Couleur de fond du bouton
+                          Colors.green, // Couleur de fond du bouton
                       foregroundColor:
                           Colors.white, // Couleur du texte du bouton
                       shape: RoundedRectangleBorder(
