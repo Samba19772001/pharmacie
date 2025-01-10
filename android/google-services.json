@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "480548802635",
+    "project_id": "gstoct-1fe34",
+    "storage_bucket": "gstoct-1fe34.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:480548802635:android:cf9d93bf10a99c705e3dce",
+        "android_client_info": {
+          "package_name": "com.example.svmv_koom"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbK3oKmmrr_-IvWctxNEsIXnFWqOpB-fs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
