@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'ecran/accueil.dart';
 import 'ecran/connexion.dart';
-import 'ecran/gestion/liste_medocs.dart';
-import 'ecran/gestion/entre_sortie.dart';
-import 'ecran/gestion/ajouter_medocs.dart';
-import 'ecran/gestion/rapport.dart';
 import 'ecran/inscrition.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(ApplicationPharmacie());
 }
 
@@ -24,10 +23,6 @@ class ApplicationPharmacie extends StatelessWidget {
       routes: {
         '/connexion': (context) => PageConnexion(),
         '/accueil': (context) => PageAccueil(),
-        '/listemedocs': (context) => PageListeMedoc(),
-        '/entresortie': (context) => PageEntreSortie(),
-        '/ajoutermedoc': (context) => PageAjouterMedoc(),
-        '/rapport': (context) => RapportsStockPage(),
         '/inscription': (context) => PageInscription(),
       },
     );

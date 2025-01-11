@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "480548802635",
-    "project_id": "gstoct-1fe34",
-    "storage_bucket": "gstoct-1fe34.firebasestorage.app"
+    "project_number": "239707454152",
+    "project_id": "samakome-ac71b",
+    "storage_bucket": "samakome-ac71b.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:480548802635:android:cf9d93bf10a99c705e3dce",
+        "mobilesdk_app_id": "1:239707454152:android:06d651d91c4f3db767c3fd",
         "android_client_info": {
-          "package_name": "com.example.svmv_koom"
+          "package_name": "com.example.sama_koom"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAbK3oKmmrr_-IvWctxNEsIXnFWqOpB-fs"
+          "current_key": "AIzaSyC9NCkXSXDCOnjyVpmyFC6GfzFagm8KRp8"
         }
       ],
       "services": {

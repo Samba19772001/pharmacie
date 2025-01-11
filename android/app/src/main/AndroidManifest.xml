@@ -1,8 +1,21 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="app.firebaseApk.com.firebase_app">
     <application
         android:label="svmv_koom"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+        <!-- Permissions nécessaires pour Google Sign-In -->
+        <meta-data
+            android:name="com.google.android.gms.auth.api.credentials.CREDENTIALS"
+            android:value="true" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+    
+        <!-- Ajoute cette ligne si tu utilises Firebase avec Google Sign-In -->
+        <meta-data
+            android:name="com.google.firebase.auth.api.gms.version"
+            android:value="19.0.0" />
         
         <activity
             android:name=".MainActivity"

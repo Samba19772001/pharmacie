@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:samakome/ecran/accueil.dart'; // Importation de la page d'accueil
 
 class PageConnexion extends StatefulWidget {
   final TextEditingController emailController = TextEditingController();
@@ -33,7 +34,6 @@ class _PageConnexionState extends State<PageConnexion> {
                     ),
                   ),
                 ),
-
                 Text(
                   'Bienvenue ! Connectez-vous pour continuer',
                   style: TextStyle(
@@ -42,9 +42,7 @@ class _PageConnexionState extends State<PageConnexion> {
                       color: Colors.white),
                   textAlign: TextAlign.center,
                 ),
-                SizedBox(
-                  height: 10,
-                ),
+                SizedBox(height: 10),
                 // Champ Email
                 MyTransparentTextField(
                   controller: widget.emailController,
@@ -65,11 +63,23 @@ class _PageConnexionState extends State<PageConnexion> {
                 SizedBox(height: 30),
                 ElevatedButton(
                   onPressed: () {
-                    // Action de connexion
                     String email = widget.emailController.text;
                     String password = widget.passwordController.text;
-                    print("Email: $email, Mot de passe: $password");
-                    Navigator.pushNamed(context, '/accueil');
+
+                    // Simulation de la connexion réussie
+                    if (email == "test@test.com" && password == "password123") {
+                      // Redirige vers la page d'accueil après une connexion réussie
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => PageAccueil()),
+                      );
+                    } else {
+                      // Afficher un message d'erreur si les informations de connexion sont incorrectes
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                            content: Text('Email ou mot de passe incorrect')),
+                      );
+                    }
                   },
                   child: Text(
                     "Se connecter",
@@ -78,29 +88,27 @@ class _PageConnexionState extends State<PageConnexion> {
                     ),
                   ),
                   style: ElevatedButton.styleFrom(
-                      // Couleur du bouton
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 90, vertical: 20),
-                      textStyle: TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      backgroundColor: Colors.greenAccent),
+                    padding: EdgeInsets.symmetric(horizontal: 90, vertical: 20),
+                    textStyle: TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    backgroundColor: Colors.greenAccent,
+                  ),
                 ),
-                SizedBox(
-                  height: 10,
-                ),
+                SizedBox(height: 10),
                 Container(
                   width: double.infinity,
                   alignment: Alignment.bottomRight,
                   child: TextButton(
-                      onPressed: () {
-                        Navigator.pushNamed(context, '/inscription');
-                      },
-                      child: Text(
-                        "Creer un compte",
-                        style: TextStyle(fontSize: 20, color: Colors.white),
-                      )),
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/inscription');
+                    },
+                    child: Text(
+                      "Creer un compte",
+                      style: TextStyle(fontSize: 20, color: Colors.white),
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -147,8 +155,9 @@ class MyTransparentTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          color: Colors.grey.withOpacity(0.7),
-          borderRadius: BorderRadius.circular(12)),
+        color: Colors.grey.withOpacity(0.7),
+        borderRadius: BorderRadius.circular(12),
+      ),
       child: TextField(
         controller: controller,
         obscureText: isPassword, // Masque le texte si isPassword est vrai

@@ -66,7 +66,7 @@ class _PageAccueilState extends State<PageAccueil> {
             ),
             ListTile(
               leading: Icon(Icons.history),
-              title: Text('Historique des Transactions'),
+              title: Text('rapport de stock'),
               onTap: () {
                 Navigator.pop(context);
                 Navigator.pushNamed(context, '/rapport');
